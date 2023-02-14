@@ -46,15 +46,95 @@ const products = [
         "https://api.lorem.space/image/watch?w=640&h=480&r=4565"
       ]
     }
-  ]
+]
+const person = [
+        {
+        name: "Nicolás Rodríguez",
+        age: 27,
+        email: "nicolasrodriguezch@hotmail.com",
+        phone: 3002643270,
+        addres: 'calle 404',
+        city: 'Bogotá',
+        headLine: 'TOP programa Student',
+        link: [
+            {
+                name : 'linkedIn',
+                link : 'https://www.linkedin.com/in/nicolas-rodriguez-chaves1/'
+            },
+            {
+                name: 'Github',
+                link:'https://github.com/Nicolas-Rodriguez-Ch'
+            }
+        ],
+        website: 'localhost/8080',
+        skills: [
+            {
+                name: 'JavaScript',
+                level: 'Beginner'
+            },
+            {
+                name : 'React',
+                level: 'Beginner'
+            },
+            {
+                name: 'Node',
+                level: 'Beginner'
+            },
+            {
+                name: 'HTML',
+                level: 'Beginner'
+            }
+        ]
+    },{
+        name: "Oscar Nuñez",
+        age: 43,
+        email: "oscar.nunez07@hotmail.com",
+        phone: 3002878194,
+        addres: 'calle 404',
+        city: 'Bogotá',
+        headLine: 'TOP programa Student',
+        link: [
+            {
+                name : 'linkedIn',
+                link : 'https://www.linkedin.com/in/oscar-nu%C3%B1ez-68115587/'
+            },
+            {
+                name: 'Github',
+                link:'https://github.com/Oskarnuz'
+            }
+        ],
+        website: 'localhost/8080',
+        skills: [
+            {
+                name: 'JavaScript',
+                level: 'Beginner'
+            },
+            {
+                name : 'React',
+                level: 'Beginner'
+            },
+            {
+                name: 'Node',
+                level: 'Beginner'
+            },
+            {
+                name: 'HTML',
+                level: 'Beginner'
+            }
+        ]
+    }
+] 
 
-  app.get('/api/products', (req, res) => {
+app.get('/api/products', (req, res) => {
     res.json(products);
-  });
+});
 
 app.get('/info', (req, res) => {
     const date = new Date();
     res.send(`<p>Our store has info for ${products.length} products</p> \n <p>${date}</p>`);
 });
 
+app.get('/about', (req, res) => {
+    res.json(person);
+});
 app.listen(8080, () => console.log('Listening on port 8080'));
