@@ -48,10 +48,13 @@ const products = [
     }
   ]
 
+  app.get('/api/products', (req, res) => {
+    res.json(products);
+  });
+
 app.get('/info', (req, res) => {
     const date = new Date();
     res.send(`<p>Our store has info for ${products.length} products</p> \n <p>${date}</p>`);
-})
-
+});
 
 app.listen(8080, () => console.log('Listening on port 8080'));
