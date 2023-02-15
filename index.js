@@ -1,6 +1,17 @@
 const express = require('express');
+const bodyParser = require("body-parser");
 const app = express();
 const {products, person} = require("./products")
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.post('/api/products/:phoneNumber', (req, res) => {
+    let data = req.body.phoneNumber;
+    
+    res.send(data);
+    
+})
 
 app.get('/api/products', (req, res) => {
     res.status(200).json(products);
@@ -17,6 +28,7 @@ app.delete('/api/products/:id', (req, res) => {
     const product = products.find((product) => product.id === +id && product);
     res.send(`deleted product ${product.id}`);
 });
+
 
 app.get('/info', (req, res) => {
     const date = new Date();
