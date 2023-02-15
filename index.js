@@ -12,7 +12,11 @@ app.get('/api/products/:id', (req, res) => {
     if (!product) return res.status(404).send("The product doesn't exist");
     res.status(200).json(product);
 });
-
+app.delete('/api/products/:id', (req, res) => {
+    const { id } = req.params
+    const product = products.find((product) => product.id === +id && product);
+    res.send(`deleted product ${product.id}`);
+});
 
 app.get('/info', (req, res) => {
     const date = new Date();
