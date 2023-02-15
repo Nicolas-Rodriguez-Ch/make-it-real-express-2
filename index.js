@@ -3,20 +3,14 @@ const app = express();
 const {products, person} = require("./products")
 
 app.get('/api/products', (req, res) => {
-    res.json(products);
+    res.status(200).json(products);
 });
-/*
-for (let i = 0; i < products.length; i++) {
-    const element = products[i].id;
-    app.get(`/api/products/${element}`, (req, res) => {
-        res.json(products[i])
-    })
-    
-}*/
 
-app.get("/api/products/:ïd", (req, res) => {
-    const productId = req.params.id
-    console.log("Peticion por id", productId)
+app.get('/api/products/:id', (req, res) => {
+    const { id } = req.params
+    const product = products.find((product) => product.id === +id && product);
+    if (!product) return res.status(404).send("The product doesn't exist");
+    res.status(200).json(product);
 });
 
 
