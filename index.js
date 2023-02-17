@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const {products, person} = require("./products");
+let {products, person} = require("./products");
 
 
 app.use(morgan('tiny'));
@@ -36,7 +36,8 @@ app.get('/api/products/:id', (req, res) => {
 // Eliminar una entrada
 app.delete('/api/products/:id', (req, res) => {
     const { id } = req.params
-    const product = products.find((product) => product.id === +id && product);
+    const product = products.find((product) => product.id === parseInt(id) && product);
+    products = products.filter((element)=> element.id !== product.id);
     res.status(200).send(`deleted product ${product.id}`);
 });
 
